@@ -1,11 +1,137 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Shop — NOVA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop — NOVA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .mobile-filter-toggle { display: none; }
+        @media (max-width: 800px) {
+            .mobile-filter-toggle { width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 12px; padding:15px 16px; border:1px solid var(--border); border-radius:14px; background:#fff; color:var(--ink); font:inherit; font-weight:700; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+            .filter-chevron { display:inline-flex; align-items:center; justify-content:center; font-size:22px; line-height:1; transform:rotate(0deg); transition:transform .35s ease-in-out; }
+            .mobile-filter-toggle.active .filter-chevron { transform:rotate(180deg); }
+            .shop-layout { display:block; }
+            .shop-layout .filters { display:block; width:100%; max-height:0; margin:0; padding-top:0; padding-bottom:0; overflow:hidden; opacity:0; visibility:hidden; transform:translateY(-6px); transition:max-height .45s ease-in-out, opacity .25s ease-in-out, transform .35s ease-in-out, margin .45s ease-in-out, visibility .45s ease-in-out; }
+            .shop-layout .filters.open { max-height:1200px; margin-bottom:18px; opacity:1; visibility:visible; transform:translateY(0); }
+        }
+    </style>
+</head>
+
 <body>
-<div class="promo">Sign up and get 20% off your first order. <a href="index.html#newsletter">Sign Up Now</a><button class="promo-close">×</button></div>
-<header class="site-header"><a class="logo" href="index.html">NOVA<span>.</span></a><nav class="desktop-nav"><a class="active" href="shop.html">Shop <span>⌄</span></a><a href="shop.html?sort=sale">On Sale</a><a href="shop.html?sort=new">New Arrivals</a><a href="shop.html?category=brands">Brands</a></nav><div class="search-box"><span>⌕</span><input id="globalSearch" placeholder="Search for products..."></div><div class="header-actions"><a href="cart.html">🛒</a><a href="index.html#account">◉</a><button class="hamburger" id="hamburger"><i></i><i></i><i></i></button></div></header>
-<div class="mobile-menu" id="mobileMenu"><a href="shop.html">Shop</a><a href="shop.html?sort=sale">On Sale</a><a href="shop.html?sort=new">New Arrivals</a><a href="shop.html?category=brands">Brands</a><a href="cart.html">Cart</a></div>
-<main class="container shop-page"><div class="breadcrumbs">Home <span>›</span> Shop</div><div class="shop-layout">
-<aside class="filters"><div class="filter-title"><h3>Filters</h3><button id="clearFilters">Reset</button></div><div class="filter-group"><h4>Category</h4><label><input type="checkbox" value="T-Shirts"> T-Shirts</label><label><input type="checkbox" value="Shirts"> Shirts</label><label><input type="checkbox" value="Jeans"> Jeans</label><label><input type="checkbox" value="Jackets"> Jackets</label><label><input type="checkbox" value="Activewear"> Activewear</label></div><div class="filter-group"><h4>Price</h4><div class="price-row"><input id="minPrice" type="number" value="50" min="0"><span>—</span><input id="maxPrice" type="number" value="300" min="0"></div></div><div class="filter-group"><h4>Size</h4><div class="chips"><button data-size="S">Small</button><button data-size="M">Medium</button><button data-size="L">Large</button><button data-size="XL">X-Large</button></div></div><div class="filter-group"><h4>Dress Style</h4><label><input type="checkbox" value="Casual"> Casual</label><label><input type="checkbox" value="Formal"> Formal</label><label><input type="checkbox" value="Party"> Party</label><label><input type="checkbox" value="Gym"> Gym</label></div><button class="btn dark full" id="applyFilters">Apply Filter</button></aside>
-<section class="shop-results"><div class="shop-head"><div><h1 id="shopTitle">Casual</h1><p id="resultCount"></p></div><label class="sort">Sort by <select id="sortSelect"><option value="popular">Most Popular</option><option value="new">Newest</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option></select></label></div><div class="product-grid three" id="shopProducts"></div><div class="pagination" id="pagination"></div></section>
-</div></main>
-<section class="newsletter container" id="newsletter"><h2>STAY UP TO DATE ABOUT<br>OUR LATEST OFFERS</h2><form id="newsletterForm"><input type="email" required placeholder="✉  Enter your email address"><button>Subscribe to Newsletter</button></form></section><footer class="footer"><div class="container footer-grid"><div class="footer-brand"><a class="logo" href="index.html">NOVA<span>.</span></a><p>Modern clothing made for people who like their style clean, confident and effortless.</p><div class="socials"><a href="#">𝕏</a><a href="#">f</a><a href="#">◎</a><a href="#">◉</a></div></div><div><h4>COMPANY</h4><a href="#">About</a><a href="#">Features</a><a href="#">Works</a><a href="#">Careers</a></div><div><h4>HELP</h4><a href="#">Customer Support</a><a href="#">Delivery Details</a><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a></div><div><h4>FAQ</h4><a href="#">Account</a><a href="#">Manage Deliveries</a><a href="cart.html">Orders</a><a href="#">Payment</a></div><div><h4>RESOURCES</h4><a href="#">Style Guide</a><a href="#">Development Tutorial</a><a href="#">How-to Blog</a><a href="#">YouTube Playlist</a></div></div><div class="container footer-bottom"><span>NOVA © 2026, All Rights Reserved</span><span>VISA · Mastercard · PayPal · Apple Pay · G Pay</span></div></footer><div class="toast" id="toast"></div><script src="script.js"></script></body></html>
+    <div class="promo">Sign up and get 20% off your first order. <a href="index.html#newsletter">Sign Up Now</a><button
+            class="promo-close">×</button></div>
+    <header class="site-header"><a class="logo" href="index.html">NOVA<span>.</span></a>
+        <nav class="desktop-nav"><a class="active" href="shop.html">Shop <span>⌄</span></a><a
+                href="shop.html?sort=sale">On Sale</a><a href="shop.html?sort=new">New Arrivals</a><a
+                href="shop.html?category=brands">Brands</a></nav>
+        <div class="search-box"><span>⌕</span><input id="globalSearch" placeholder="Search for products..."></div>
+        <div class="header-actions"><a href="cart.html">🛒</a><a href="index.html#account">◉</a><button
+                class="hamburger" id="hamburger"><i></i><i></i><i></i></button></div>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><a href="shop.html">Shop</a><a href="shop.html?sort=sale">On Sale</a><a
+            href="shop.html?sort=new">New Arrivals</a><a href="shop.html?category=brands">Brands</a><a
+            href="cart.html">Cart</a></div>
+    <main class="container shop-page">
+        <div class="breadcrumbs">Home <span>›</span> Shop</div>
+        <div class="shop-layout">
+            <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button" aria-expanded="false" aria-controls="mobileFilters">
+                <span>Filters</span>
+                <span class="filter-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <aside class="filters" id="mobileFilters">
+                <div class="filter-title">
+                    <h3>Filters</h3><button id="clearFilters">Reset</button>
+                </div>
+                <div class="filter-group">
+                    <h4>Category</h4><label><input type="checkbox" value="T-Shirts"> T-Shirts</label><label><input
+                            type="checkbox" value="Shirts"> Shirts</label><label><input type="checkbox" value="Jeans">
+                        Jeans</label><label><input type="checkbox" value="Jackets"> Jackets</label><label><input
+                            type="checkbox" value="Activewear"> Activewear</label>
+                </div>
+                <div class="filter-group">
+                    <h4>Price</h4>
+                    <div class="price-row"><input id="minPrice" type="number" value="50" min="0"><span>—</span><input
+                            id="maxPrice" type="number" value="300" min="0"></div>
+                </div>
+                <div class="filter-group">
+                    <h4>Size</h4>
+                    <div class="chips"><button data-size="S">Small</button><button data-size="M">Medium</button><button
+                            data-size="L">Large</button><button data-size="XL">X-Large</button></div>
+                </div>
+                <div class="filter-group">
+                    <h4>Dress Style</h4><label><input type="checkbox" value="Casual"> Casual</label><label><input
+                            type="checkbox" value="Formal"> Formal</label><label><input type="checkbox" value="Party">
+                        Party</label><label><input type="checkbox" value="Gym"> Gym</label>
+                </div><button class="btn dark full" id="applyFilters">Apply Filter</button>
+            </aside>
+            <section class="shop-results">
+                <div class="shop-head">
+                    <div>
+                        <h1 id="shopTitle">Casual</h1>
+                        <p id="resultCount"></p>
+                    </div><label class="sort">Sort by <select id="sortSelect">
+                            <option value="popular">Most Popular</option>
+                            <option value="new">Newest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select></label>
+                </div>
+                <div class="product-grid three" id="shopProducts"></div>
+                <div class="pagination" id="pagination"></div>
+            </section>
+        </div>
+    </main>
+    <section class="newsletter container" id="newsletter">
+        <h2>STAY UP TO DATE ABOUT<br>OUR LATEST OFFERS</h2>
+        <form id="newsletterForm"><input type="email" required
+                placeholder="✉  Enter your email address"><button>Subscribe to Newsletter</button></form>
+    </section>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand"><a class="logo" href="index.html">NOVA<span>.</span></a>
+                <p>Modern clothing made for people who like their style clean, confident and effortless.</p>
+                <div class="socials"><a href="#">𝕏</a><a href="#">f</a><a href="#">◎</a><a href="#">◉</a></div>
+            </div>
+            <div>
+                <h4>COMPANY</h4><a href="#">About</a><a href="#">Features</a><a href="#">Works</a><a
+                    href="#">Careers</a>
+            </div>
+            <div>
+                <h4>HELP</h4><a href="#">Customer Support</a><a href="#">Delivery Details</a><a href="#">Terms &
+                    Conditions</a><a href="#">Privacy Policy</a>
+            </div>
+            <div>
+                <h4>FAQ</h4><a href="#">Account</a><a href="#">Manage Deliveries</a><a href="cart.html">Orders</a><a
+                    href="#">Payment</a>
+            </div>
+            <div>
+                <h4>RESOURCES</h4><a href="#">Style Guide</a><a href="#">Development Tutorial</a><a href="#">How-to
+                    Blog</a><a href="#">YouTube Playlist</a>
+            </div>
+        </div>
+        <div class="container footer-bottom"><span>NOVA © 2026, All Rights Reserved</span><span>VISA · Mastercard ·
+                PayPal · Apple Pay · G Pay</span></div>
+    </footer>
+    <div class="toast" id="toast"></div>
+    <script>
+        (() => {
+            const toggle = document.getElementById("mobileFilterToggle");
+            const filters = document.getElementById("mobileFilters");
+            if (!toggle || !filters) return;
+            toggle.addEventListener("click", () => {
+                const isOpen = filters.classList.toggle("open");
+                toggle.classList.toggle("active", isOpen);
+                toggle.setAttribute("aria-expanded", String(isOpen));
+            });
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
